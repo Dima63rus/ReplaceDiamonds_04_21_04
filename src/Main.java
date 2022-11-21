@@ -10,38 +10,12 @@ public class Main {
         Scanner loScanner = new Scanner(System.in);
         System.out.println("Please enter text: Number card <4008 1234 5678> 8912, ***");
 
-        //Password
+        //Получить введенный текст
         String lvOldText = loScanner.nextLine();
 
         Password loPassword = new Password();
 
-        //Строка для замены
-        int lvBegIndex = lvOldText.indexOf("<");
-        int lvLastIndex = lvOldText.lastIndexOf(">");
-        lvLastIndex += 1;
-
-        // Считать строку между индексами - начало строки останется без изменений
-        String lvTextNotChange = lvOldText.substring(0, lvBegIndex);
-        lvLastIndex += 1;
-
-        // Считать строку между ковычками для изменения
-        String lvTextForChange = lvOldText.substring(lvBegIndex, lvLastIndex);
-
-        int lvBegIndex2 = lvOldText.indexOf(",");
-        lvBegIndex2 += 1;
-
-        // Считать строку между индексами на что будем менять
-        String lvTextOnChange = lvOldText.substring(lvBegIndex2, lvOldText.length());
-        lvTextOnChange = lvTextOnChange.trim();
-
-        //Заменить строку lvTextForChange на lvTextOnChange
-        String lvNewText = lvOldText.replace(lvTextForChange, lvTextOnChange);
-
-        //Удалить лишнюю концовку после запятой
-        StringBuffer loStringBuffer = new StringBuffer(lvNewText);
-        loStringBuffer.delete(lvNewText.lastIndexOf(","), lvNewText.length());
-
-        //Результат замены
-        System.out.println(loStringBuffer);
+        //Получить измененный текст
+        System.out.println(loPassword.searchAndReplaceDiamonds(lvOldText));
     }
 }
